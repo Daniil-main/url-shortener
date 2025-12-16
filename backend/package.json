@@ -1,12 +1,12 @@
 {
-  "name": "url-shortener-backend",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "src/index.js",
+  "name": "url-shortener-server",
+  "version": "1.1.0",
+  "description": "URL Shortener Backend",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -15,8 +15,19 @@
     "compression": "^1.7.4",
     "rate-limiter-flexible": "^4.0.1",
     "nanoid": "^5.0.7",
-    "node-fetch": "^3.3.2",
+    "redis": "^4.6.0",
+    "swagger-ui-express": "^5.0.0",
+    "swagger-jsdoc": "^6.2.8",
     "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/helmet": "^4.0.0",
+    "@types/swagger-ui-express": "^4.1.6",
+    "typescript": "^5.3.0",
+    "tsx": "^4.6.0"
   },
   "engines": {
     "node": ">=22.0.0"

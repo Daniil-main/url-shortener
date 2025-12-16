@@ -1,4 +1,4 @@
-export const parseUserAgent = (userAgent) => {
+export const parseUserAgent = (userAgent?: string) => {
   const ua = userAgent?.toLowerCase() || '';
   
   let browser = 'Unknown';
@@ -6,7 +6,6 @@ export const parseUserAgent = (userAgent) => {
   else if (ua.includes('firefox')) browser = 'Firefox';
   else if (ua.includes('safari') && !ua.includes('chrome')) browser = 'Safari';
   else if (ua.includes('edge')) browser = 'Edge';
-  else if (ua.includes('opera')) browser = 'Opera';
 
   let os = 'Unknown';
   if (ua.includes('windows')) os = 'Windows';

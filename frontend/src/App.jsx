@@ -1,22 +1,30 @@
-import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import {UrlShortener} from './components/UrlShortener.jsx'
-import StatsPage from './components/StatsPage.jsx'
-import Navbar from './components/Navbar.jsx'
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Navbar } from './components/Navbar';
+import { UrlShortener } from './components/UrlShortener';
+import { StatsPage } from './components/StatsPage';
 
-function App() {
+const routes = [
+  { path: '/', element: <UrlShortener /> },
+  { path: '/stats/:code', element: <StatsPage /> },
+] as const;
+
+export const App: React.FC = () => {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Navbar />
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 1rem' }}>
+      <main className="container mx-auto px-4 py-8">
         <Routes>
-          <Route path="/" element={<UrlShortener />} />
-          <Route path="/stats/:code" element={<StatsPage />} />
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={route.element}
+            />
+          ))}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </div>
+      </main>
     </div>
-  )
-}
-
-export default App
+  );
+};
